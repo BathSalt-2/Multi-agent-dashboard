@@ -1,0 +1,124 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #6200ea;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* 3D Canvas Styles */
+#3d-canvas-container {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 1rem 0;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#3d-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* Chat Interface Styles */
+#chat-interface {
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#chat-window {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+#chat-input {
+    width: calc(100% - 80px);
+    padding: 0.5rem;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+#send-button {
+    width: 80px;
+    padding: 0.5rem;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #3700b3;
+}
+
+/* Customization Options Styles */
+#customization-options {
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+#customization-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#customization-form label {
+    margin-bottom: 0.5rem;
+}
+
+#customization-form select,
+#customization-form button {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #3d-canvas-container {
+        height: 300px;
+    }
+
+    #chat-interface,
+    #customization-options {
+        width: 90%;
+    }
+}

@@ -1,0 +1,109 @@
+/* Define color palette */
+:root {
+    --deep-purple: #4b0082;
+    --quantum-blue: #1e90ff;
+    --metallic-accent: #b0c4de;
+    --background-dark: #1a1a1a;
+    --text-light: #f0f0f0;
+}
+
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 50px 0;
+    background: linear-gradient(135deg, var(--deep-purple), var(--quantum-blue));
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: var(--text-light);
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 10px 0 0;
+    color: var(--metallic-accent);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.visuals {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.quantum-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--metallic-accent),
+        var(--metallic-accent) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    opacity: 0.2;
+    z-index: 2;
+}
+
+.temporal-waveforms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--quantum-blue), transparent);
+    opacity: 0.1;
+    z-index: 3;
+}
+
+.cta {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#exploreButton {
+    padding: 15px 30px;
+    font-size: 1em;
+    color: var(--text-light);
+    background-color: var(--deep-purple);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#exploreButton:hover {
+    background-color: var(--quantum-blue);
+}

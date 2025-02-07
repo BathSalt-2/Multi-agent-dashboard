@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import kotlin.math.sin
 
 @Composable
-fun AnimatedBackground() {
+fun AnimatedBackground(sliderPosition: Float) {
     val infiniteTransition = rememberInfiniteTransition()
 
     // Animation for undulating timelines
@@ -37,14 +37,14 @@ fun AnimatedBackground() {
     )
 
     Canvas(modifier = Modifier.fillMaxSize()) {
-        drawUndulatingTimelines(timelineOffset.value)
+        drawUndulatingTimelines(timelineOffset.value, sliderPosition)
         drawParticleCollisions(particleOffset.value)
     }
 }
 
-private fun DrawScope.drawUndulatingTimelines(offset: Float) {
-    val amplitude = 50f
-    val frequency = 0.1f
+private fun DrawScope.drawUndulatingTimelines(offset: Float, sliderPosition: Float) {
+    val amplitude = 50f + sliderPosition * 10f // Adjust amplitude dynamically based on slider position
+    val frequency = 0.1f + sliderPosition * 0.01f // Adjust frequency dynamically based on slider position
     val centerY = size.height / 2
 
     for (x in 0 until size.width.toInt() step 20) {
@@ -58,21 +58,21 @@ private fun DrawScope.drawUndulatingTimelines(offset: Float) {
     }
 }
 
-private fun DrawScope.drawParticleCollisions(offset: Float) {
+private fun DrawScope.drawParticleCollisions(offset: Float, sliderPosition: Float) {
     val centerX = size.width / 2
     val centerY = size.height / 2
 
     drawCircle(
         color = Color.Magenta,
         radius = 10f + offset / 10,
-        center = Offset(centerX + offset, centerY + offset),
+        center = Offset(centerX + offset + sliderPosition, centerY + offset + sliderPosition),
         style = Stroke(width = 3f)
     )
 
     drawCircle(
         color = Color.Yellow,
         radius = 10f + offset / 10,
-        center = Offset(centerX - offset, centerY - offset),
+        center = Offset(centerX - offset - sliderPosition, centerY - offset - sliderPosition),
         style = Stroke(width = 3f)
     )
 }

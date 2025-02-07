@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
         val recyclerView = remember { RecyclerView(this@MainActivity) }
 
         Box(modifier = Modifier.fillMaxSize()) {
-            AnimatedBackground()
+            AnimatedBackground(sliderPosition = sliderPosition.collectAsState().value)
 
             Column(
                 modifier = Modifier
@@ -47,7 +47,8 @@ class MainActivity : ComponentActivity() {
                     sliderPosition = sliderPosition,
                     onValueChange = { newValue ->
                         sliderPosition.value = newValue
-                        // Handle slider value changes here
+                        // Update AnimatedBackground and ChronalGridOverlay based on slider value
+                        // This ensures synchronized interactions between components
                     }
                 )
 
@@ -55,7 +56,8 @@ class MainActivity : ComponentActivity() {
 
                 ChronalGridOverlay(
                     modifier = Modifier.weight(1f),
-                    recyclerView = recyclerView
+                    recyclerView = recyclerView,
+                    sliderPosition = sliderPosition.collectAsState().value
                 )
             }
         }

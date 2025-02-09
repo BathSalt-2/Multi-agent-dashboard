@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun MainContent() {
         val sliderPosition = remember { MutableStateFlow(50f) }
-        val recyclerView = remember { RecyclerView(this@MainActivity) }
+        val recyclerView = remember { RecyclerView(this@MainActivity).apply { setHasFixedSize(true) } }
 
         Box(modifier = Modifier.fillMaxSize()) {
             AnimatedBackground(sliderPosition = sliderPosition.collectAsState().value)
@@ -47,8 +47,8 @@ class MainActivity : ComponentActivity() {
                     sliderPosition = sliderPosition,
                     onValueChange = { newValue ->
                         sliderPosition.value = newValue
-                        // Update AnimatedBackground and ChronalGridOverlay based on slider value
-                        // This ensures synchronized interactions between components
+                        // Synchronize AnimatedBackground and ChronalGridOverlay with slider value
+                        // This ensures smooth and interactive updates across components
                     }
                 )
 

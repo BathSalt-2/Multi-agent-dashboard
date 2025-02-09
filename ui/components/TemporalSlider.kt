@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -20,7 +21,8 @@ fun TemporalSlider(
     modifier: Modifier = Modifier,
     sliderPosition: StateFlow<Float>,
     onValueChange: (Float) -> Unit,
-    labelFormatter: (Float) -> String = { it.toInt().toString() }
+    labelFormatter: (Float) -> String = { it.toInt().toString() },
+    step: Float = 1f
 ) {
     val currentPosition = sliderPosition.collectAsState()
 
@@ -40,7 +42,8 @@ fun TemporalSlider(
             colors = SliderDefaults.colors(
                 thumbColor = Color.Cyan,
                 activeTrackColor = Color.Magenta
-            )
+            ),
+            steps = ((100f / step) - 1).toInt()
         )
     }
 }
@@ -50,6 +53,7 @@ fun TemporalSlider(
 fun TemporalSliderExample() {
     val sliderPosition = remember { MutableStateFlow(50f) }
 
+    // Example usage of TemporalSlider with a step of 5
     TemporalSlider(
         sliderPosition = sliderPosition,
         onValueChange = { newValue ->

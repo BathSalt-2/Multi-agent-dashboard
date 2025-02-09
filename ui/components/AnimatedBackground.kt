@@ -1,4 +1,4 @@
-create a comprehensive  package ui.components
+package ui.components
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas

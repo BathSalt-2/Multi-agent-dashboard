@@ -11,8 +11,11 @@
   "features": [
     "feature_a",
     "feature_b",
-    "feature_c"
-  ]
+    "feature_c",
+    "feature_d"
+  ],
+  "timeout": 30,
+  "retry_attempts": 3
 }
 ```
 

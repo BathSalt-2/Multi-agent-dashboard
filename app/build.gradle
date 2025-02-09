@@ -13,7 +13,7 @@ android {
         versionName "1.0"
 
         // Enabling ProGuard for release builds
-        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-retrofit-okhttp.pro'
 
         // Setting up production-specific configurations
         buildConfigField "String", "ENVIRONMENT", "\"production\""
@@ -21,14 +21,19 @@ android {
         buildConfigField "String", "LOGGING_LEVEL", "\"ERROR\""
     }
 
+    // Adding ProGuard rules for Retrofit and OkHttp
+    tasks.withType(com.android.build.gradle.tasks.ProguardConfigurableTask).configureEach {
+        proguardFiles 'proguard-retrofit-okhttp.pro'
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-retrofit-okhttp.pro'
 
             // Signing configuration for release builds
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release ?: signingConfigs.debug
         }
         debug {
             applicationIdSuffix ".debug"

@@ -11,6 +11,13 @@ The Multi-agent Dashboard is an advanced platform designed to simplify the manag
 - **Scalable and Resilient Architecture**: Built to efficiently manage thousands of agents with high availability.
 - **Comprehensive User Management**: Implement role-based access control (RBAC) to ensure secure and tailored access for different user roles.
 
+## Prerequisites
+Before setting up the Multi-agent Dashboard, ensure you have the following tools installed:
+
+- **Node.js**: Version 16 or higher
+- **npm**: Version 7 or higher
+- **Docker**: Version 20.10 or higher (optional, for containerized deployment)
+
 ## Installation Instructions
 To set up the Multi-agent Dashboard on your local machine, follow these steps:
 
@@ -22,7 +29,7 @@ To set up the Multi-agent Dashboard on your local machine, follow these steps:
    ```
 
 2. **Install Dependencies**:
-   Ensure you have Node.js (v16 or higher) and npm installed. Then, install the required dependencies:
+   Ensure you have Node.js and npm installed. Then, install the required dependencies:
    ```bash
    npm install
    ```
@@ -36,7 +43,13 @@ To set up the Multi-agent Dashboard on your local machine, follow these steps:
    npm start
    ```
 
-5. **Access the Dashboard**:
+5. **(Optional) Run with Docker**:
+   Build and run the application using Docker:
+   ```bash
+   docker-compose up --build
+   ```
+
+6. **Access the Dashboard**:
    Open your browser and navigate to `http://localhost:3000` to access the application.
 
 ## Usage Guide
@@ -92,6 +105,9 @@ We welcome contributions from the community! To contribute:
 
 6. **Review Process**:
    Collaborate with maintainers during the review process to address feedback and ensure quality.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact Information
 For questions, support, or feedback, please reach out to the project maintainers:

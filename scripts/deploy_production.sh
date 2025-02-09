@@ -6,8 +6,8 @@
 set -e
 
 # Define variables
-BUILD_DIR="app/build/outputs/apk/production/release"
-APK_NAME="app-production-release.apk"
+BUILD_DIR="app/build/outputs/apk/release"
+APK_NAME="app-release.apk"
 OUTPUT_DIR="deploy"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 
@@ -27,11 +27,11 @@ log "Cleaning the project..."
 
 # Step 2: Build the APK for production
 log "Building the APK for production..."
-./gradlew assembleProductionRelease || error "Failed to build the production APK."
+./gradlew assembleRelease || error "Failed to build the release APK."
 
 # Step 3: Verify the APK exists
 if [ ! -f "$BUILD_DIR/$APK_NAME" ]; then
-  error "APK not found at $BUILD_DIR/$APK_NAME. Build might have failed."
+  error "APK not found at $BUILD_DIR/$APK_NAME. Ensure the build process completed successfully."
 fi
 
 # Step 4: Create output directory if it doesn't exist
@@ -94,7 +94,7 @@ log "Cleaning the project..."
 
 # Step 2: Build the APK for production
 log "Building the APK for production..."
-./gradlew assembleProductionRelease || error "Failed to build the production APK."
+./gradlew assembleRelease || error "Failed to build the release APK."
 
 # Step 3: Verify the APK exists
 if [ ! -f "$BUILD_DIR/$APK_NAME" ]; then

@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "com.example.multiagentdashboard"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        // Enabling ProGuard for release builds
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-retrofit-okhttp.pro'
+
+        // Setting up production-specific configurations
+        buildConfigField "String", "ENVIRONMENT", "\"production\""
+        buildConfigField "String", "API_BASE_URL", "\"https://api.production.example.com\""
+        buildConfigField "String", "LOGGING_LEVEL", "\"ERROR\""
+    }
+
+    // Adding ProGuard rules for Retrofit and OkHttp
+    tasks.withType(com.android.build.gradle.tasks.ProguardConfigurableTask).configureEach {
+        proguardFiles 'proguard-retrofit-okhttp.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-retrofit-okhttp.pro'
+
+            // Signing configuration for release builds
+            signingConfig signingConfigs.release ?: signingConfigs.debug
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore/release.keystore")
+            storePassword "your_keystore_password"
+            keyAlias "your_key_alias"
+            keyPassword "your_key_password"
+        }
+    }
+
+    flavorDimensions "environment"
+    productFlavors {
+        production {
+            dimension "environment"
+            applicationId "com.example.multiagentdashboard"
+            versionNameSuffix "-prod"
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:1.10.1"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.9.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
+
+    // Additional dependencies for production
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.11.0"
+}

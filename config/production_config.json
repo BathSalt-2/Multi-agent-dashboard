@@ -1,0 +1,51 @@
+{
+  "environment": "production",
+  "api_base_url": "https://api.production.example.com",
+  "logging_level": "ERROR",
+  "database": {
+    "host": "prod-db.example.com",
+    "port": 5432,
+    "username": "prod_user",
+    "password": "secure_password"
+  },
+  "features": [
+    "feature_a",
+    "feature_b",
+    "feature_c",
+    "feature_d"
+  ],
+  "timeout": 30,
+  "retry_attempts": 3
+}
+```
+
+### Step 4: Review the Code
+
+- **File Path**: The file is correctly named `config/production_config.json`.
+- **JSON Format**: The file is valid JSON, with proper syntax and structure.
+- **Production Settings**: The file includes:
+  - `environment` set to `production`.
+  - `api_base_url` pointing to a production API endpoint.
+  - `logging_level` set to `ERROR` for minimal logging in production.
+  - `database` connection details for the production database.
+  - A list of enabled `features` for production.
+
+### Final Output
+
+```
+{
+  "environment": "production",
+  "api_base_url": "https://api.production.example.com",
+  "logging_level": "ERROR",
+  "database": {
+    "host": "prod-db.example.com",
+    "port": 5432,
+    "username": "prod_user",
+    "password": "secure_password"
+  },
+  "features": [
+    "feature_a",
+    "feature_b",
+    "feature_c"
+  ]
+}
